@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Enter Password</h2>
+        <input type="password" id="passwordInput" placeholder="Enter 4-digit password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="message" class="error-message"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Content</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content-container">
+        <h1>Welcome to the Secret Page!</h1>
+        <p>This is a paragraph with some exclusive content that you can only see after entering the correct password.</p>
+        <p>Feel free to add more text, images, or anything else you'd like here.</p>
+
+        <div class="image-gallery">
+            <h3>Our Exclusive Pictures:</h3>
+            <img src="https://via.placeholder.com/300x200?text=Image+1" alt="Placeholder Image 1">
+            <img src="https://via.placeholder.com/300x200?text=Image+2" alt="Placeholder Image 2">
+            <img src="https://via.placeholder.com/300x200?text=Image+3" alt="Placeholder Image 3">
+            <!-- You can replace these placeholder image URLs with your actual image paths -->
+        </div>
+
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Simple logout function
+        function logout() {
+            window.location.href = 'index.html'; // Redirect back to the login page
+        }
+    </script>
+</body>
+</html>
+const CORRECT_PASSWORD = "1234"; // IMPORTANT: Replace with your desired 4-digit password
+
+function checkPassword() {
+    const passwordInput = document.getElementById("passwordInput").value;
+    const messageElement = document.getElementById("message");
+
+    if (passwordInput === CORRECT_PASSWORD) {
+        // Redirect to the secret page if password is correct
+        window.location.href = "secret.html";
+    } else {
+        messageElement.textContent = "Incorrect password. Please try again.";
+        messageElement.style.color = "red";
+    }
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.login-container, .content-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h2, h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Secret Content Page Styling */
+.content-container {
+    text-align: left;
+}
+
+.content-container p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.image-gallery {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.image-gallery img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
